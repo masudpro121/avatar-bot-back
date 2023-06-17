@@ -13,7 +13,7 @@ module.exports = (prompt) => {
         temperature: 0,
       })
       .then((res) => {
-        resolve(res.data);
+        resolve(res.data.choices[0]?.text);
       })
       .catch((err) => {
         console.log(err);
