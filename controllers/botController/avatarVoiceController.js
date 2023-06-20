@@ -2,10 +2,10 @@ const generateAvatarVoice = require("../../utils/generateAvatarVoice")
 const generateChat = require("../../utils/generateChat")
 
 module.exports = async(req, res) => {
-    const {prompt} = req.body
+    const {prompt, avatar} = req.body
     const chatResult = await generateChat(prompt) 
-    generateAvatarVoice(chatResult)
+    generateAvatarVoice(chatResult, avatar)
     .then(result=>{
-        res.send(result)
+        res.send({video: result.result_url, text:chatResult})
     })
 }
